@@ -1,15 +1,16 @@
 #import "StripePaymentPlugin.h"
-#import <Stripe/Stripe.h>
 #import "TPSStripeManager.h"
+
+@import Stripe;
 
 @implementation StripePaymentPlugin {
     FlutterResult flutterResult;
     StripeModule* stripeModule;
 }
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
-    
+
     FlutterMethodChannel* channel = [FlutterMethodChannel methodChannelWithName:@"stripe_payment" binaryMessenger:[registrar messenger]];
-    
+
     StripePaymentPlugin* instance = [[StripePaymentPlugin alloc] init];
     [registrar addMethodCallDelegate:instance channel:channel];
 }
